@@ -27,9 +27,7 @@ class <%= class_path_namespace %><%= plural_class_name %>Controller < <%= class_
   end
 
   def <%= singular_file_name %>_params
-    params.require(:<%= singular_file_name %>).permit(
-    <% whitelisted_attributes.each do |attribute| %>
-      :<%= attribute %>,<% end %>
+    params.require(:<%= singular_file_name %>).permit(<%= whitelisted_attributes.map{|attribute| attribute.to_sym}.join(", ") %>)
 
   end
 
