@@ -28,7 +28,6 @@ class <%= class_path_namespace %><%= plural_class_name %>Controller < <%= class_
 
   def <%= singular_file_name %>_params
     params.require(:<%= singular_file_name %>).permit(<%= whitelisted_attributes.map{|attribute| ":#{attribute}"}.join(", ") %>)
-
   end
 
   def <%= singular_file_name %>_url(<%= singular_file_name %>)
