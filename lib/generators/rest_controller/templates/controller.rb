@@ -27,9 +27,10 @@ class <%= class_path_namespace %><%= plural_class_name %>Controller < <%= class_
   end
 
   def <%= singular_file_name %>_params
-    {<% whitelisted_attributes.each do |attribute| %>
-      :<%= attribute %> => params[:<%= attribute %>],<% end %>
-    }
+    params.require(:<%= singular_file_name %>).permit(
+    <% whitelisted_attributes.each do |attribute| %>
+      :<%= attribute %>,<% end %>
+
   end
 
   def <%= singular_file_name %>_url(<%= singular_file_name %>)
